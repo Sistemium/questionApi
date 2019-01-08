@@ -3,19 +3,24 @@ import map from 'lodash/map';
 import mapValues from 'lodash/mapValues';
 import 'sistemium-telegram/config/aws';
 import log from 'sistemium-telegram/services/log';
-import findAll from '../data/dynamo';
+import { findAll, find } from '../data/dynamo';
 
 const { debug, error } = log('rest:api');
 const router = new Router();
 
 export default router;
 
-router.get('/questions', question);
+router.get('/question', question);
+router.get('/question/:id', question);
 
 async function question(ctx, next) {
 
+  const { id } = ctx.params;
+
+  debug(ctx.params.id);
+
   try {
-    const res = await findAll('Question');
+    const res = id ? await find('Question', id) : await findAll('Question');
     debug(res);
     ctx.body = convertResponse(res);
   } catch ({ message }) {

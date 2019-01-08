@@ -1,19 +1,28 @@
 import { DynamoDB } from 'aws-sdk';
 
-export default findAll;
+export { find, findAll };
 
 const dynamo = new DynamoDB();
+
+async function find(name, id) {
+
+  const params = {
+    ExpressionAttributeValues: {
+      ':id': {
+        S: id,
+      },
+    },
+    KeyConditionExpression: 'id = :id',
+    TableName: name,
+  };
+
+  return dynamo.query(params).promise();
+
+}
 
 async function findAll(name) {
 
   const params = {
-    // ExpressionAttributeValues: {
-    //   ":v1": {
-    //     S: "No One You Know"
-    //   }
-    // },
-    // KeyConditionExpression: "Artist = :v1",
-    // ProjectionExpression: "SongTitle",
     TableName: name,
   };
 
