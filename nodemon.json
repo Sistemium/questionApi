@@ -11,6 +11,6 @@
     "CREATE_NEWS": "",
     "REST_PORT": "9100",
     "NOTIFY_HOUR_MIN": 8,
-    "NOTIFY_HOUR_MAX": 20
+    "NOTIFY_HOUR_MAX": 20,
   }
 }
