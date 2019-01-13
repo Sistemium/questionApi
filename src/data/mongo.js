@@ -26,7 +26,7 @@ let questionDB;
 
 })();
 
-export { find, findAll };
+export { find, findAll, findAny };
 
 async function find(name, id) {
 
@@ -37,5 +37,11 @@ async function find(name, id) {
 async function findAll(name) {
 
   return questionDB.collection(name).find().toArray();
+
+}
+
+async function findAny(name) {
+
+  return questionDB.collection(name).aggregate([{ $sample: { size: 1 } }]).toArray();
 
 }
