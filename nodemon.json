@@ -9,8 +9,8 @@
     "API_URL": "https://api.sistemium.com/v4d/vr",
     "GROUP_CHAT_ID": "",
     "CREATE_NEWS": "",
-    "REST_PORT": "9100",
+    "REST_PORT": "9101",
     "NOTIFY_HOUR_MIN": 8,
-    "NOTIFY_HOUR_MAX": 20,
+    "NOTIFY_HOUR_MAX": 20
   }
 }
